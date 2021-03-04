@@ -1,0 +1,153 @@
+@import "./colors";
+
+// header
+.header {
+  &__inner {
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  position: sticky;
+  top: 0;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin: 0 60px 0 0;
+
+  &__span {
+    width: 30px;
+    height: 2px;
+    background: $white;
+    border-radius: 10px;
+    &:last-child {
+      margin: 8px 0 0 0;
+      width: 25px;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    color: $grey;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0 40px 0 0;
+    text-transform: uppercase;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.logo {
+  margin: 0 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  color: $white;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: $grey;
+
+  &__search {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    margin: 0 80px 0 0;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: $grey;
+      position: absolute;
+      bottom: -2px;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+      transition: clip-path 0.3s ease-in-out;
+    }
+    &:hover {
+      &::after {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &__input {
+      background: none;
+      border: none;
+      border-radius: 3px;
+      padding: 4px 5px;
+      color: $white;
+      font-size: 16px;
+      outline: none;
+
+      max-width: 300px;
+      width: 100%;
+    }
+  }
+
+  &__profile {
+    margin: 0 40px 0 0;
+  }
+  &__cart {
+    margin: 0 20px 0 0;
+    color: $white;
+  }
+  &__basket {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: $white;
+    color: $dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1360px) {
+  .account {
+    &__search {
+      margin: 0 40px 0 0;
+    }
+  }
+}
+@media screen and (max-width: 1220px) {
+  .account {
+    &__search {
+      &__input {
+        max-width: 120px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1110px) {
+  .account {
+    &__search {
+      display: none;
+    }
+  }
+}
