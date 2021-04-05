@@ -220,7 +220,7 @@ function Product({ product, products }) {
                   product.onSale ? product.newPrice : product.price
                 }`}
                 data-item-image={`${fromImageToUrl(product.images[0].image)}`}
-                data-item-url={`${API_URL}/${router.asPath}`}
+                data-item-url={`${router.asPath}`}
                 data-item-description={`${product.description}`}
                 data-item-custom1-name={`color`}
                 data-item-custom1-options={`${String(colorsArr)
