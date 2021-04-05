@@ -9,6 +9,7 @@ import useWindowDimensions from "../utilities/useWindowDimensions";
 
 export default function Home({ page }) {
   const products = page.products;
+  console.log(page);
 
   // width
   const { width, height } = useWindowDimensions();
