@@ -4,6 +4,7 @@ import styles from "../../styles/Product.module.scss";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { route } from "next/dist/next-server/server/router";
 
 const categories = [
   "Beanies",
@@ -117,7 +118,7 @@ function Product({ product, products }) {
     .map((color) => `${color.color}|`)
     .filter((e) => e !== `${color}|`);
   colorsArr.unshift(`${color}|`);
-
+  console.log(router.asPath);
   return (
     <div className={"content"}>
       <Head>
