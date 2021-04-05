@@ -1,0 +1,103 @@
+@import "./colors";
+
+// footer
+.footer {
+  width: 100%;
+  background: $yellow;
+  margin: 120px 0 0 0;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 20px 0;
+    position: relative;
+    z-index: 8;
+  }
+}
+.nav {
+  display: flex;
+  max-width: 925px;
+  justify-content: space-between;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 40px 0;
+  }
+  &__title {
+    font-size: 18px;
+    color: $dark;
+    font-weight: 500;
+    margin: 0 0 20px 0;
+  }
+  &__link {
+    font-size: 14px;
+    font-weight: 400;
+    color: $dark;
+    margin: 0 0 20px 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid rgba($color: $dark, $alpha: 0.1);
+    padding: 20px 0;
+    color: $dark;
+    &__container {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__title {
+      font-size: 14px;
+      color: $dark;
+    }
+    &__right {
+      display: flex;
+      &__title {
+        margin: 0 15px;
+        font-size: 14px;
+        position: relative;
+        &::after {
+          content: "";
+          width: 1px;
+          height: 100%;
+          background: $dark;
+          position: absolute;
+          right: -15px;
+          pointer-events: none;
+        }
+        &:last-child {
+          margin: 0 0 0 15px;
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 760px) {
+  .nav {
+    &__footer {
+      &__container {
+        flex-direction: column;
+        align-items: center;
+        margin: 0 !important;
+      }
+      &__right {
+        margin: 20px 0 0 0;
+        &__title {
+          &:last-child {
+            margin: 0 15px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 690px) {
+  .nav {
+    flex-direction: column;
+  }
+}

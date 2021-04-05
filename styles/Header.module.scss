@@ -2,6 +2,8 @@
 
 // header
 .header {
+  mix-blend-mode: difference;
+  z-index: 10;
   &__inner {
     padding: 40px 0;
     display: flex;
@@ -45,14 +47,46 @@
     font-weight: 400;
     margin: 0 40px 0 0;
     text-transform: uppercase;
+    position: relative;
+
     &:last-child {
       margin: 0;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &__active {
+      &::after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: $grey;
+        bottom: -46px;
+        left: 0;
+        position: absolute;
+      }
+    }
+  }
+
+  // nav__open
+  &__open {
+    align-items: center;
+    justify-content: center;
+    &__nav {
+      flex-direction: column;
+      align-items: center;
+      & > a {
+        margin: 20px 0 0 0 !important;
+        font-size: 72px;
+        &:first-child {
+          margin: 0 !important;
+        }
+      }
     }
   }
 }
 
 .logo {
-  margin: 0 20px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -72,7 +106,8 @@
   color: $grey;
 
   &__search {
-    display: flex;
+    display: none;
+    // display: flex;
     align-items: center;
     position: relative;
 
@@ -126,6 +161,41 @@
     align-items: center;
   }
 }
+.listItems {
+  z-index: 2;
+  opacity: 0;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: $lightGrey;
+  top: 0;
+
+  padding: 135px 0 0 0;
+  // transition: all 0.3s ease-in-out;
+  &__title {
+    font-size: 18px;
+  }
+  &__container {
+    max-width: 1120px;
+    display: flex;
+    justify-content: space-between;
+    & > div {
+      display: flex;
+      flex-direction: column;
+      & > div {
+        display: flex;
+        flex-direction: column;
+
+        & > a {
+          margin: 10px 0;
+          &:first-of-type {
+            margin: 20px 0 10px 0;
+          }
+        }
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 1360px) {
   .account {
@@ -134,6 +204,16 @@
     }
   }
 }
+.menuNav {
+  display: flex;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  background: $lightGrey;
+  z-index: 9;
+}
+
 @media screen and (max-width: 1220px) {
   .account {
     &__search {
@@ -148,6 +228,59 @@
   .account {
     &__search {
       display: none;
+    }
+  }
+}
+@media screen and (max-width: 1060px) {
+  .nav {
+    display: none;
+  }
+}
+@media screen and (max-width: 860px) {
+  .listItems {
+    &__container {
+      max-width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 760px) {
+  .account {
+    &__profile {
+      margin: 0 20px 0 0;
+    }
+    &__cart {
+      display: none;
+    }
+  }
+}
+@media screen and (max-width: 640px) {
+  .logo {
+    position: relative;
+    left: 0;
+    transform: translate(0, 0);
+
+    transform: scale(0.8);
+
+    flex: 1;
+  }
+  .menu {
+    margin: 0 20px 0 0;
+  }
+  .nav {
+    &__open {
+      &__nav {
+        & > a {
+          font-size: 48px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .listItems {
+    &__container {
+      & > div {
+        width: min-content;
+      }
     }
   }
 }

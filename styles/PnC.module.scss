@@ -1,0 +1,84 @@
+@import "./colors";
+
+// privacy & Cookies page
+.pnc {
+  width: auto;
+  &__inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > h1 {
+      font-size: 24px;
+      color: $dark;
+      font-weight: 500;
+      &.pnpTitle {
+        margin: 10px 0 0 0;
+      }
+    }
+    & > span {
+      font-size: 14px;
+      color: $grey;
+      margin: 10px 0 0 0;
+      mix-blend-mode: difference;
+      &.main {
+        max-width: 552px;
+        text-align: center;
+      }
+    }
+
+    &__obj {
+      margin: 20px 0 0 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      & > div {
+        padding: 20px 10px;
+        border: 1px solid $dark;
+        color: $dark;
+        text-align: center;
+        max-width: 320px;
+        margin: 0 5px;
+      }
+    }
+    & > p {
+      font-size: 16px;
+      font-weight: normal;
+      color: $grey;
+      mix-blend-mode: difference;
+      max-width: 1040px;
+      align-self: start;
+      &.main {
+        max-width: 920px;
+        text-align: center;
+        align-self: center;
+        font-size: 18px;
+      }
+      &.pnpMain {
+        align-self: center;
+      }
+      margin: 20px 0 0 0;
+      text-align: start;
+      line-height: 24px;
+
+      & > ul {
+        margin: 10px 0 0 30px;
+        max-width: 900px;
+        & > li {
+          margin: 5px 0;
+        }
+      }
+    }
+    & > h2 {
+      margin: 20px 0 0 0;
+      align-self: start;
+      border-bottom: 1px solid $dark;
+      width: 100%;
+      padding: 20px 0;
+      font-size: 20px;
+      font-weight: 500;
+      color: $dark;
+    }
+  }
+}

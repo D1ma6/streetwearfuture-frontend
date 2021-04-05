@@ -1,0 +1,243 @@
+@import "./colors";
+
+.home {
+  &__main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+.intro {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+
+  justify-content: center;
+
+  position: relative;
+
+  &__img {
+    margin: 0 15px;
+    height: fit-content;
+
+    &:nth-child(2) {
+      margin-top: 10px;
+    }
+    &:last-child {
+      margin-top: 20px;
+    }
+  }
+  &__logo {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    mix-blend-mode: difference;
+  }
+
+  &::after {
+    content: "choose your style.";
+    position: absolute;
+    color: $white;
+    font-size: 12px;
+    font-weight: 400;
+    left: 25px;
+    bottom: 10px;
+    max-width: 64px;
+  }
+}
+.newsletter {
+  margin: 80px 0 0 0;
+  background: $yellow;
+  width: 100%;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: $dark;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    margin: 20px 0 0 0;
+    max-width: 623px;
+    width: 100%;
+    justify-content: space-between;
+
+    & > input {
+      max-width: 420px;
+      width: 100%;
+      background: none;
+      border: 1px solid $dark;
+      border-radius: 20px;
+      padding: 12px 20px;
+      outline: none;
+      font-size: 14px;
+    }
+    & > button {
+      background: $dark;
+      width: 180px;
+      color: $white;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+    }
+  }
+}
+.look {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 80px 0 0 0;
+
+  & > h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 40px 0;
+    color: $white;
+  }
+  &__items {
+    display: flex;
+    justify-content: center;
+    & > div {
+      max-width: 420px;
+      width: 100%;
+      margin: 0 40px;
+    }
+
+    &__img {
+      & > img {
+        width: 100%;
+        height: 580px;
+        object-fit: cover;
+      }
+    }
+
+    &__title {
+      font-size: 18px;
+      font-weight: 500;
+      color: $white;
+      margin: 15px 0;
+    }
+
+    &__btn {
+      font-size: 14px;
+      color: $yellow;
+      font-weight: 500;
+      padding: 10px 15px;
+      border: 1px solid $yellow;
+      border-radius: 5px;
+      background: none;
+      outline: none;
+      top: 20px;
+      position: relative;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .intro {
+    margin: -50px 0 0 0;
+    transform: scale(0.8);
+    width: 100%;
+    height: 540px;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+@media only screen and (max-width: 960px) {
+  .intro {
+    margin: -105px 0 0 0;
+    transform: scale(0.6);
+    height: 420px;
+    &__img {
+      &:first-child {
+        margin-top: 20px;
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+  .newsletter {
+    &__form {
+      max-width: 600px;
+      & > input {
+        margin: 0 20px;
+      }
+    }
+  }
+  .look {
+    &__items {
+      & > div {
+        margin: 0 20px;
+      }
+      &__img {
+        & > img {
+          height: auto;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .intro {
+    margin: -85px 0 0 0;
+    transform: scale(0.6);
+  }
+  .newsletter {
+    padding: 40px 20px;
+    &__title {
+      font-size: 18px;
+    }
+  }
+  .look {
+    & > h1 {
+      margin: 0;
+    }
+    &__items {
+      & > div {
+        margin: 40px 0 0 0;
+        &:last-child {
+          margin: 60px 0 0 0;
+        }
+      }
+      flex-direction: column;
+    }
+  }
+}
+@media only screen and (max-width: 520px) {
+  .intro {
+    margin: -85px 0 0 0;
+    transform: scale(0.55);
+  }
+  .look {
+    &__items {
+      & > div {
+        width: 90%;
+      }
+      align-items: center;
+    }
+  }
+}
+@media only screen and (max-width: 420px) {
+  .intro {
+    margin: -105px 0 0 0;
+    transform: scale(0.45);
+  }
+}
