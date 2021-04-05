@@ -214,7 +214,7 @@ function Product({ product, products }) {
             <div className={styles.product__price__container}>
               <button
                 className={`${"snipcart-add-item"} ${styles.product__buy}`}
-                data-item-id={`${product.id}`}
+                data-item-id={`${product.slug}`}
                 data-item-name={`${product.title}`}
                 data-item-price={`${
                   product.onSale ? product.newPrice : product.price
