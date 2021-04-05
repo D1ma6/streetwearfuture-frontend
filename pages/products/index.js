@@ -57,16 +57,4 @@ export async function getStaticProps() {
   };
 }
 
-export async function getStaticPaths() {
-  const products_res = await fetch(`${API_URL}/products/`);
-  const products = await products_res.json();
-
-  return {
-    paths: products.map((product) => ({
-      params: { slug: String(product.slug) },
-    })),
-    fallback: false,
-  };
-}
-
 export default index;
