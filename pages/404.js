@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, InlineIcon } from "@iconify/react";
+import { Icon } from "@iconify/react";
 import robotVacuum from "@iconify/icons-mdi/robot-vacuum";
 import Link from "next/link";
 import Head from "next/head";
