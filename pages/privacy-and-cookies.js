@@ -7,13 +7,6 @@ function pandc() {
     <div className={`${styles.pnc} content`}>
       <Head>
         <title>Streetwearfuture | Privacy and Cookies</title>
-        <link
-          href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <link rel="preconnect" href="https://app.snipcart.com" />
-        <link rel="preconnect" href="https://cdn.snipcart.com" />
       </Head>
       <div className={styles.pnc__inner}>
         <h1>Privacy & Cookies: Our promises</h1>

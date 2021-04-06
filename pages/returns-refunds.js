@@ -7,13 +7,6 @@ function returnsRefunds() {
     <div className={`${styles.pnc} content`}>
       <Head>
         <title>Streetwearfuture | returns and refunds</title>
-        <link
-          href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <link rel="preconnect" href="https://app.snipcart.com" />
-        <link rel="preconnect" href="https://cdn.snipcart.com" />
       </Head>
       <div className={styles.pnc__inner}>
         <span>RETURNS & REFUNDS</span>

@@ -9,13 +9,6 @@ function fourOfour() {
     <div className="fourOfour">
       <Head>
         <title>Streetwearfuture | 404</title>
-        <link
-          href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <link rel="preconnect" href="https://app.snipcart.com" />
-        <link rel="preconnect" href="https://cdn.snipcart.com" />
       </Head>
       <div className="fourOfour__icon">
         <Icon

@@ -8,13 +8,6 @@ function termsAndConditions() {
     <div className={`${styles.pnc} content`}>
       <Head>
         <title>Streetwearfuture | Terms and Conditions</title>
-        <link
-          href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <link rel="preconnect" href="https://app.snipcart.com" />
-        <link rel="preconnect" href="https://cdn.snipcart.com" />
       </Head>
       <div className={styles.pnc__inner}>
         <h1>Terms & Conditions</h1>

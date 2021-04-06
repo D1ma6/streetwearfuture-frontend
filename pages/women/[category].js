@@ -94,13 +94,6 @@ function category({ products }) {
     <div className="content">
       <Head>
         <title>Streetwearfuture | Women categories</title>
-        <link
-          href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <link rel="preconnect" href="https://app.snipcart.com" />
-        <link rel="preconnect" href="https://cdn.snipcart.com" />
       </Head>
       <div className="product__container">
         <h1 className={styles.category__title}>{router.query.category}</h1>

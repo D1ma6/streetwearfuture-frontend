@@ -118,18 +118,11 @@ function Product({ product, products }) {
     .map((color) => `${color.color}|`)
     .filter((e) => e !== `${color}|`);
   colorsArr.unshift(`${color}|`);
-  console.log(router.asPath);
+
   return (
     <div className={"content"}>
       <Head>
         <title>Streetwearfuture | Product page</title>
-        <link
-          href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <link rel="preconnect" href="https://app.snipcart.com" />
-        <link rel="preconnect" href="https://cdn.snipcart.com" />
       </Head>
       <div className={`${styles.product}`}>
         <div className={styles.product__left}>
