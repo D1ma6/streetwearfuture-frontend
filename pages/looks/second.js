@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { API_URL, fromImageToUrl } from "../../utilities/urls";
-import styles from "../../styles/Product.module.scss";
 import Link from "next/link";
 import Head from "next/head";
-import { useRouter } from "next/router";
 
 function look({ page }) {
   const products = page.products;
-  console.log(products);
-  console.log(page.SecondLook[0].UIDOfTheItem);
-  const router = useRouter();
-  console.log(router);
+
   return (
     <div className="content">
       <Head>

@@ -3,13 +3,11 @@ import styles from "../styles/Home.module.scss";
 import { API_URL, fromImageToUrl } from "../utilities/urls";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
 
 export default function Home({ page }) {
   const products = page.products;
-  console.log(page);
 
   // width
   const { width, height } = useWindowDimensions();
