@@ -234,7 +234,7 @@ function Product({ product, products }) {
             <h1>Free Shipping</h1>
             <p>
               to United Kingdom via Royal mail Standard Shipping Estimated
-              Delivery: 21-36 days
+              Delivery: 7-23 days
             </p>
           </div>
         </div>
