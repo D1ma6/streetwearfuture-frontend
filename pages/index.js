@@ -441,7 +441,7 @@ export default function Home({ page }) {
                 100 - (firstLookPrice / firstLookOriginalPrice) * 100
               ) != 0 ? (
                 <>
-                  <p>{`£${firstLookOriginalPrice}`}</p>
+                  <p>{`£${firstLookOriginalPrice.toFixed(2)}`}</p>
                   <span>{`(-%${Math.round(
                     100 - (firstLookPrice / firstLookOriginalPrice) * 100
                   )})`}</span>
@@ -470,7 +470,7 @@ export default function Home({ page }) {
                 100 - (secondLookPrice / secondLookOriginalPrice) * 100
               ) != 0 ? (
                 <>
-                  <p>{`£${secondLookOriginalPrice}`}</p>
+                  <p>{`£${secondLookOriginalPrice.toFixed(2)}`}</p>
                   <span>{`(-%${Math.round(
                     100 - (secondLookPrice / secondLookOriginalPrice) * 100
                   )})`}</span>
