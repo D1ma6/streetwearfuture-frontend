@@ -4,7 +4,6 @@ import styles from "../../styles/Product.module.scss";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { route } from "next/dist/next-server/server/router";
 
 const categories = [
   "Beanies",
