@@ -35,7 +35,7 @@ function look({ page }) {
                   ) : (
                     <h2 className="product__price">{`£${product.price}`}</h2>
                   )}
-                  <span className="product__sold">236 sold</span>
+                  {/* <span className="product__sold">236 sold</span> */}
                 </div>
               </a>
             </Link>

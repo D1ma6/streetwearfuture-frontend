@@ -10,7 +10,7 @@ export default function Home({ page }) {
   const products = page.products;
 
   // width
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const [endPos, setEndPos] = useState(
     width >= 1321
       ? 5
