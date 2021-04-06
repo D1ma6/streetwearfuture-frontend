@@ -20,6 +20,8 @@ function category({ products }) {
     "Red",
     "Cargo",
     "Navy",
+    "Green",
+    "Lime",
   ]);
   const [shoe, setShoe] = useState([
     "6",
