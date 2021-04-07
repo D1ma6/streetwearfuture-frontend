@@ -8,6 +8,14 @@ function index({ products }) {
     <div className="content">
       <Head>
         <title>Streetwearfuture | Product Page</title>
+        <meta
+          name="description"
+          content="Streetwearfuture is an online clothing website that sells clothes."
+        ></meta>
+        <meta
+          name="keywords"
+          content="street, streetwear, fashion, clothes, street wear fashion, techwear, tech, wear, clothing, brand, shop, shopping"
+        />
       </Head>
       <div className="product__container">
         {products.map((product) => (

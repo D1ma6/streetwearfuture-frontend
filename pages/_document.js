@@ -11,6 +11,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link
             href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
             rel="stylesheet"

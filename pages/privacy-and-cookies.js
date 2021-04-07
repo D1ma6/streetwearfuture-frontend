@@ -7,6 +7,14 @@ function pandc() {
     <div className={`${styles.pnc} content`}>
       <Head>
         <title>Streetwearfuture | Privacy and Cookies</title>
+        <meta
+          name="description"
+          content="Streetwearfuture is an online clothing website that sells clothes. Privacy and Cookies page"
+        ></meta>
+        <meta
+          name="keywords"
+          content="street, streetwear, fashion, clothes, street wear fashion, techwear, tech, wear, clothing, brand, shop, shopping"
+        />
       </Head>
       <div className={styles.pnc__inner}>
         <h1>Privacy & Cookies: Our promises</h1>

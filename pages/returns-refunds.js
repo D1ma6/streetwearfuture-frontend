@@ -7,6 +7,14 @@ function returnsRefunds() {
     <div className={`${styles.pnc} content`}>
       <Head>
         <title>Streetwearfuture | returns and refunds</title>
+        <meta
+          name="description"
+          content="Streetwearfuture is an online clothing website that sells clothes. Returns and Refunds page"
+        ></meta>
+        <meta
+          name="keywords"
+          content="street, streetwear, fashion, clothes, street wear fashion, techwear, tech, wear, clothing, brand, shop, shopping"
+        />
       </Head>
       <div className={styles.pnc__inner}>
         <span>RETURNS & REFUNDS</span>

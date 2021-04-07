@@ -137,6 +137,14 @@ export default function Home({ page }) {
     <div className={styles.home}>
       <Head>
         <title>Streetwearfuture</title>
+        <meta
+          name="description"
+          content="Streetwearfuture is an online clothing website that sells clothes."
+        ></meta>
+        <meta
+          name="keywords"
+          content="street, streetwear, fashion, clothes, street wear fashion, techwear, tech, wear, clothing, brand, shop, shopping"
+        />
       </Head>
 
       <div className={`${styles.home__main} ${"content"}`}>

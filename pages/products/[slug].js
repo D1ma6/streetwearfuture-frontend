@@ -121,7 +121,15 @@ function Product({ product, products }) {
   return (
     <div className={"content"}>
       <Head>
-        <title>Streetwearfuture | Product page</title>
+        <title>Streetwearfuture | {product.title}</title>
+        <meta
+          name="description"
+          content={`Streetwearfuture is an online clothing website that sells clothes. This is the page of the ${product.title}`}
+        ></meta>
+        <meta
+          name="keywords"
+          content="street, streetwear, fashion, clothes, street wear fashion, techwear, tech, wear, clothing, brand, shop, shopping, items, products"
+        />
       </Head>
       <div className={`${styles.product}`}>
         <div className={styles.product__left}>
