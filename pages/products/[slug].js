@@ -4,6 +4,7 @@ import styles from "../../styles/Product.module.scss";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import * as fbq from "../lib/fpixel";
 
 const categories = [
   "Beanies",
@@ -33,6 +34,13 @@ const categories = [
 ];
 
 function Product({ product, products }) {
+  const handleClick = () => {
+    fbq.event("Purchase", {
+      currency: "GBD",
+      value: `${product.onSale ? product.newPrice : product.price}`,
+    });
+  };
+
   const [size, setSize] = useState(undefined);
   const [color, setColor] = useState(undefined);
   const checkSize = (items, currItem) => {
@@ -232,6 +240,7 @@ function Product({ product, products }) {
                   .split(",")
                   .join("")
                   .replace(/.$/, "")}`}
+                onClick={() => handleClick()}
               >
                 Add to cart
               </button>
