@@ -4,7 +4,7 @@ import styles from "../../styles/Product.module.scss";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import * as fbq from "../lib/fpixel";
+import * as fbq from "../../lib/fpixel";
 
 const categories = [
   "Beanies",
