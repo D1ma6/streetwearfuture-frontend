@@ -48,7 +48,6 @@ function look({ page }) {
 export async function getStaticProps() {
   const page_res = await fetch(`${API_URL}/home-page`);
   const page = await page_res.json();
-
   return {
     props: {
       page,
