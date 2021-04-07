@@ -36,7 +36,7 @@ const categories = [
 function Product({ product, products }) {
   const handleClick = () => {
     fbq.event("Purchase", {
-      currency: "GBD",
+      currency: "GBP",
       value: `${product.onSale ? product.newPrice : product.price}`,
     });
   };
