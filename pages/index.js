@@ -5,9 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
-
+import { useRouter } from "next/router";
 export default function Home({ page }) {
   const products = page.products;
+  const router = useRouter();
 
   // width
   const { width } = useWindowDimensions();
@@ -22,6 +23,12 @@ export default function Home({ page }) {
       ? 2
       : 2
   );
+
+  // popups
+  const [popup, setPopUp] = useState(page.message.display);
+  const [news, setNews] = useState(page.news.display);
+
+  // looks
   const [firstLook, setFirstLook] = useState([]);
   const [secondLook, setSecondLook] = useState([]);
 
@@ -131,8 +138,16 @@ export default function Home({ page }) {
 
     setSecondLook(secondLook);
     setFirstLook(firstLook);
-  }, []);
 
+    news
+      ? (document.querySelector("body").style.overflowY = "hidden")
+      : (document.querySelector("body").style.overflowY = "scroll");
+  }, []);
+  useEffect(() => {
+    news
+      ? (document.querySelector("body").style.overflowY = "hidden")
+      : (document.querySelector("body").style.overflowY = "scroll");
+  }, [news]);
   return (
     <div className={styles.home}>
       <Head>
@@ -146,6 +161,54 @@ export default function Home({ page }) {
           content="street, streetwear, fashion, clothes, street wear fashion, techwear, tech, wear, clothing, brand, shop, shopping"
         />
       </Head>
+      {popup ? (
+        <div className="popUp">
+          <p>{page.message.message}</p>
+          <button onClick={() => setPopUp(false)}>x</button>
+        </div>
+      ) : (
+        ""
+      )}
+      {news ? (
+        <div className="newsPopUp">
+          <div>
+            <div className="newsPopUp__left">
+              <img src={fromImageToUrl(page.news.thumbnail)} />
+            </div>
+            <div className="newsPopUp__right">
+              <h1>- {page.news.title} -</h1>
+              <p>{page.news.message}</p>
+              <div className="newsPopUp__right__social">
+                <p>Visit out social media pages:</p>
+                <span>
+                  <Link href="https://www.facebook.com/streetwearfutur9">
+                    <a>Facebook</a>
+                  </Link>
+                </span>
+
+                <span>
+                  <Link href="https://www.instagram.com/streetwearfutur9/">
+                    <a>Instagram</a>
+                  </Link>
+                </span>
+              </div>
+              <div className="newsPopUp__right__btns">
+                <button
+                  onClick={() => {
+                    setNews(false);
+                    router.push("/products");
+                  }}
+                >
+                  View new arrivals
+                </button>
+                <button onClick={() => setNews(false)}>Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
 
       <div className={`${styles.home__main} ${"content"}`}>
         <div className={styles.intro}>
