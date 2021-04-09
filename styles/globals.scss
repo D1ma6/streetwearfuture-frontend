@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;600;700&display=swap");
 @import "./colors";
 
 html,
@@ -174,7 +174,7 @@ a {
   font-size: 14px;
   color: $dark;
   font-weight: 500;
-  margin: 0 0 20px 0;
+  // margin: 0 0 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,7 +359,7 @@ a {
     & > div {
       flex-direction: column;
       width: 80%;
-      height: 80vh;
+      height: 90vh;
     }
     &__left {
       max-width: 100%;
@@ -390,7 +390,5 @@ a {
   }
   .popUp {
     font-size: 12px;
-
-    margin: 0 0 20px 0;
   }
 }

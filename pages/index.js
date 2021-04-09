@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 
 function Home({ page }) {
   const products = page.products;
+  const displayProduct = page.product;
   const router = useRouter();
 
   // width
@@ -149,6 +150,7 @@ function Home({ page }) {
       ? (document.querySelector("body").style.overflowY = "hidden")
       : (document.querySelector("body").style.overflowY = "scroll");
   }, [news]);
+
   return (
     <div className={styles.home}>
       <Head>
@@ -211,42 +213,38 @@ function Home({ page }) {
         ""
       )}
 
-      <div className={`${styles.home__main} ${"content"}`}>
-        <div className={styles.intro}>
-          <div className={styles.intro__logo}>
-            <Image
-              src="/streetwearfuture.svg"
-              layout="fixed"
-              width="790"
-              height="78"
-            />
-          </div>
-          <div className={styles.intro__img}>
-            <img
-              width="260"
-              height="307"
-              key={page.image[0].image.id}
-              src={fromImageToUrl(page.image[0].image)}
-            />
-          </div>
-          <div className={styles.intro__img}>
-            <img
-              width="280"
-              height="495"
-              key={page.image[1].image.id}
-              src={fromImageToUrl(page.image[1].image)}
-            />
-          </div>
-          <div className={styles.intro__img}>
-            <img
-              width="400"
-              height="590"
-              key={page.image[2].image.id}
-              src={fromImageToUrl(page.image[2].image)}
-            />
+      <div>
+        <div className={styles.displayItem}>
+          <img src={fromImageToUrl(displayProduct.images[0].image)} />
+
+          <div>
+            <h1 className={styles.displayItem__title}>
+              {displayProduct.title}
+            </h1>
+            {displayProduct.onSale ? (
+              <div className="product__newPrice">
+                <Link href={`/products/${displayProduct.slug}`}>
+                  <button className={styles.displayItem__btn}>
+                    View product
+                  </button>
+                </Link>
+                <h2 className="product__price">{`£${displayProduct.newPrice}`}</h2>
+                <p
+                  className={styles.displayItem__p}
+                >{`£${displayProduct.price}`}</p>
+                <span>{`(-%${Math.round(
+                  100 - (displayProduct.newPrice / displayProduct.price) * 100
+                )})`}</span>
+              </div>
+            ) : (
+              <div className="product__newPrice">
+                <h2 className="product__price">{`£${displayProduct.price}`}</h2>
+              </div>
+            )}
           </div>
         </div>
-
+      </div>
+      <div className={`${styles.home__main} ${"content"}`}>
         <div className="product__container">
           <div className="product__container__title">Trending items</div>
           {products.slice(display.start, display.end).map((product) => (
