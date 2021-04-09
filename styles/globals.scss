@@ -373,25 +373,14 @@ a {
 }
 @media screen and (max-width: 640px) {
   .product {
-    &__container {
-      margin: 40px 0 0 0;
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-      &__title {
-        grid-column: 1/2;
+    &__newPrice {
+      & > p,
+      & > span {
+        font-size: 14px;
       }
     }
-    &__slider {
-      grid-column: 1/2;
-      &__nav {
-        & > button {
-          transform: scale(1.5);
-        }
-      }
-    }
-    &__image {
-      & > img {
-        height: auto;
-      }
+    &__price {
+      font-size: 14px;
     }
   }
   .content {
