@@ -532,6 +532,9 @@
   }
 }
 @media only screen and (max-width: 640px) {
+  .search {
+    grid-column: 1/3;
+  }
   .category {
     &__title {
       grid-column: 1/2;
