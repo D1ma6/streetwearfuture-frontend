@@ -8,7 +8,6 @@ function termsAndConditions() {
     <div className={`${styles.pnc} content`}>
       <Head>
         <title>Streetwearfuture | Terms and Conditions</title>
-
         <meta
           name="description"
           content="Streetwearfuture is an online clothing website that sells clothes. Terms and Conditions"
