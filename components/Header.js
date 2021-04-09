@@ -26,18 +26,29 @@ function Header() {
         const header = document.querySelector(`.${styles.header}`);
         const headerInner = document.querySelector(`.${styles.header__inner}`);
         if (st > lastScrollTop && nav == false) {
-          header.style.top = `${window.pageYOffset - 1}px`;
-          header.style.background = "#1b1b1b";
-          header.style.borderBottom = "1px solid #8f8f8f";
-          headerInner.style.padding = "20px 0";
+          if (window.pageYOffset > 120) {
+            header.style.top = "-1px";
+            header.style.background = "#1b1b1b";
+            header.style.borderBottom = "1px solid #8f8f8f";
+            headerInner.style.padding = "20px 0";
+            header.style.position = "sticky";
+          } else {
+            // header.style.top = '-1px';
+            // header.style.background = "#1b1b1b";
+            // header.style.borderBottom = "1px solid #8f8f8f";
+            // headerInner.style.padding = "20px 0";
+            // header.style.position = "sticky";
+          }
         } else {
           if (window.pageYOffset < 120) {
             header.style.top = 0;
             headerInner.style.padding = width < 761 ? "20px 0" : "40px 0";
             header.style.borderBottom = "none";
             header.style.background = "none";
+            header.style.position = "relative";
           } else {
-            header.style.top = `${window.pageYOffset - 1}px`;
+            header.style.top = "-1px";
+            header.style.position = "sticky";
             header.style.background = "#1b1b1b";
             header.style.borderBottom = "1px solid #8f8f8f";
             headerInner.style.padding = "20px 0";
