@@ -32,12 +32,6 @@ function Header() {
             header.style.borderBottom = "1px solid #8f8f8f";
             headerInner.style.padding = "20px 0";
             header.style.position = "sticky";
-          } else {
-            // header.style.top = '-1px';
-            // header.style.background = "#1b1b1b";
-            // header.style.borderBottom = "1px solid #8f8f8f";
-            // headerInner.style.padding = "20px 0";
-            // header.style.position = "sticky";
           }
         } else {
           if (window.pageYOffset < 120) {
