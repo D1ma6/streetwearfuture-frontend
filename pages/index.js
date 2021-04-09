@@ -6,7 +6,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
 import { useRouter } from "next/router";
-export default function Home({ page }) {
+
+function Home({ page }) {
   const products = page.products;
   const router = useRouter();
 
@@ -277,7 +278,6 @@ export default function Home({ page }) {
                 onClick={() => {
                   if (slider > 1) {
                     setSlider(slider - 1);
-                    console.log("yess");
                     setDisplay({
                       start: display.start - endPos,
                       end: display.end - endPos,
@@ -560,3 +560,5 @@ export async function getStaticProps() {
     },
   };
 }
+
+export default Home;

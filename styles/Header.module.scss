@@ -2,15 +2,17 @@
 
 // header
 .header {
-  mix-blend-mode: difference;
   z-index: 10;
+  width: 100%;
+
+  transition: all 0.3s ease-in-out;
   &__inner {
     padding: 40px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  position: sticky;
+  position: relative;
   top: 0;
 }
 .navbar {
@@ -244,11 +246,19 @@
   }
 }
 @media screen and (max-width: 760px) {
+  .header {
+    &__inner {
+      padding: 20px 0;
+    }
+  }
   .account {
     &__profile {
       margin: 0 20px 0 0;
     }
     &__cart {
+      display: none;
+    }
+    &__profile {
       display: none;
     }
   }

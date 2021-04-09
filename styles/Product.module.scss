@@ -53,7 +53,7 @@
     font-weight: 500;
     outline: none;
 
-    margin: 0 10px 0 0;
+    margin: 10px 10px 0 0;
 
     &_active {
       color: $white;
@@ -64,7 +64,7 @@
       font-size: 14px;
       font-weight: 500;
       color: $white;
-      margin: 20px 0 10px 0;
+      margin: 20px 0 0 0;
     }
   }
   &__sizes {
@@ -347,6 +347,103 @@
   }
 }
 
+// reviews
+.reviews {
+  margin: 80px 0 0 0;
+  color: $white;
+  max-width: 1160px;
+  display: flex;
+  flex-direction: column;
+  & > h1 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  &__cmnt {
+    margin: 20px 0 0 0;
+    width: 100%;
+    display: flex;
+    &__left,
+    &__right {
+      display: flex;
+      flex-direction: column;
+    }
+    &__left {
+      align-items: center;
+      margin: 0 40px 0 0;
+    }
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid $grey;
+
+    &__photo {
+      width: 88px;
+      height: 88px;
+      background: #000;
+      border-radius: 50%;
+    }
+    &__name {
+      margin: 15px 0 0 0;
+      font-size: 14px;
+    }
+    &__country {
+      margin: 10px 0 0 0;
+    }
+    &__right {
+      width: 100%;
+    }
+
+    &__details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &__container {
+        display: flex;
+        align-items: center;
+      }
+      &__opts {
+        margin: 0 40px 0 0;
+        font-size: 14px;
+        & > span {
+          color: $grey;
+          & > span {
+            color: $white;
+          }
+          &:first-child {
+            margin: 0 20px 0 0;
+          }
+        }
+      }
+      &__stars {
+        flex: 1;
+        & > svg {
+          margin: 0 10px 0 0;
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+      &__date {
+        font-size: 14px;
+        color: $white;
+        font-weight: 500;
+      }
+    }
+    &__msg {
+      margin: 10px 0 0 0;
+      line-height: 23px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+    &__photos {
+      margin: 10px 0 0 0;
+      & > img {
+        width: 60px;
+        height: 75px;
+        object-fit: cover;
+        margin: 0 20px 0 0;
+      }
+    }
+  }
+}
 @media only screen and (max-width: 1240px) {
   .product {
     &__right {
@@ -394,6 +491,43 @@
     }
     &__slider {
       width: auto;
+    }
+  }
+}
+@media only screen and (max-width: 870px) {
+  .reviews {
+    &__cmnt {
+      &__details {
+        &__opts {
+          margin: 0 20px 0 0;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 780px) {
+  .reviews {
+    &__cmnt {
+      &__left {
+        margin: 0 20px 0 0;
+      }
+      &__details {
+        align-items: flex-start;
+        &__container {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        &__opts {
+          margin: 0 20px 0 0;
+        }
+        &__stars {
+          margin: 10px 0 0 0;
+        }
+      }
+      &__msg {
+        font-size: 14px;
+      }
     }
   }
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import * as fbq from "../../lib/fpixel";
+import useWindowDimensions from "../../utilities/useWindowDimensions";
 
 const categories = [
   "Beanies",
@@ -66,8 +67,57 @@ function Product({ product, products }) {
   const [quantity, setQantity] = useState(1);
   const [slider, setSlider] = useState(undefined);
   const [img, setImg] = useState(0);
+
+  // width
+  const { width } = useWindowDimensions();
+  const [endPos, setEndPos] = useState(
+    width >= 1321
+      ? 5
+      : width <= 1320 && width >= 1111
+      ? 4
+      : width <= 1110 && width >= 871
+      ? 3
+      : width <= 870 && width >= 640
+      ? 2
+      : 2
+  );
+  // sliders
   const [sliderCount, setSliderCount] = useState(1);
-  const [display, setDisplay] = useState({ start: 0, end: 5 });
+  const [display, setDisplay] = useState({ start: 0, end: endPos });
+
+  // width
+  useEffect(() => {
+    if (width >= 1321) {
+      setEndPos(5);
+      setDisplay({
+        start: 0,
+        end: endPos,
+      });
+      setSliderCount(1);
+    } else if (width <= 1320 && width >= 1111) {
+      setEndPos(4);
+      setDisplay({
+        start: 0,
+        end: endPos,
+      });
+      setSliderCount(1);
+    } else if (width <= 1110 && width >= 871) {
+      setEndPos(3);
+      setDisplay({
+        start: 0,
+        end: endPos,
+      });
+      setSliderCount(1);
+    } else if (width <= 870 && width >= 640) {
+      setEndPos(2);
+      setDisplay({
+        start: 0,
+        end: endPos,
+      });
+      setSliderCount(1);
+    }
+  }, [width]);
+
   useEffect(() => {
     if (quantity < 1) {
       setQantity(1);
@@ -411,7 +461,7 @@ function Product({ product, products }) {
         </div>
       </div>
       <div className="product__container">
-        <div className="product__container__title">Recomendations</div>
+        <div className="product__container__title">Trending items</div>
         {products.slice(display.start, display.end).map((product) => (
           <Link key={product.id} href={`/products/${product.slug}`}>
             <a>
@@ -431,21 +481,20 @@ function Product({ product, products }) {
                 ) : (
                   <h2 className="product__price">{`£${product.price}`}</h2>
                 )}
-                <span className="product__sold">236 sold</span>
               </div>
             </a>
           </Link>
         ))}
-
         <div className="product__slider">
           <div className="product__slider__nav">
             <button
               onClick={() => {
                 if (sliderCount > 1) {
                   setSliderCount(sliderCount - 1);
+
                   setDisplay({
-                    start: display.start - 5,
-                    end: display.end - 5,
+                    start: display.start - endPos,
+                    end: display.end - endPos,
                   });
                 } else {
                   setSliderCount(sliderCount);
@@ -471,16 +520,18 @@ function Product({ product, products }) {
                 />
               </svg>
             </button>
-            {new Array(Math.ceil(products.length / 5)).fill("1").map((_) => (
-              <div key={Math.random()}></div>
-            ))}
+            {new Array(Math.ceil(products.length / endPos))
+              .fill("1")
+              .map((_) => (
+                <div key={Math.random()}></div>
+              ))}
             <button
-              onClick={(e) => {
-                if (sliderCount < products.length / 5) {
+              onClick={() => {
+                if (sliderCount < products.length / endPos) {
                   setSliderCount(sliderCount + 1);
                   setDisplay({
-                    start: display.start + 5,
-                    end: display.end + 5,
+                    start: display.start + endPos,
+                    end: display.end + endPos,
                   });
                 } else {
                   setSliderCount(sliderCount);
@@ -509,11 +560,116 @@ function Product({ product, products }) {
           </div>
           <div className="product__slider__index">
             <span>
-              {sliderCount} / {Math.ceil(products.length / 5)}
+              {sliderCount} / {Math.ceil(products.length / endPos)}
             </span>
           </div>
         </div>
       </div>
+
+      {/* <div className={styles.reviews}>
+        <h1 className={styles.reviews__title}>Reviews</h1>
+        <div className={styles.reviews__cmnt}>
+          <div className={styles.reviews__cmnt__left}>
+            <div className={styles.reviews__cmnt__photo}>
+              <img src="" />
+            </div>
+            <h2 className={styles.reviews__cmnt__name}>Tom Jerry</h2>
+            <span className={styles.reviews__cmnt__country}>UK</span>
+          </div>
+          <div className={styles.reviews__cmnt__right}>
+            <div className={styles.reviews__cmnt__details}>
+              <div className={styles.reviews__cmnt__details__container}>
+                <div className={styles.reviews__cmnt__details__opts}>
+                  <span>
+                    Color: <span>Black</span>
+                  </span>
+                  <span>
+                    Size: <span>M</span>
+                  </span>
+                </div>
+                <div className={styles.reviews__cmnt__details__stars}>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.23927 1.34161C9.47875 0.604557 10.5215 0.604556 10.761 1.3416L12.5147 6.73897C12.6218 7.06859 12.9289 7.29176 13.2755 7.29176H18.9506C19.7256 7.29176 20.0478 8.28345 19.4209 8.73897L14.8296 12.0747C14.5492 12.2784 14.4319 12.6395 14.539 12.9692L16.2927 18.3665C16.5322 19.1036 15.6886 19.7165 15.0616 19.261L10.4703 15.9252C10.1899 15.7215 9.81027 15.7215 9.52988 15.9252L4.93861 19.261C4.31164 19.7165 3.46805 19.1036 3.70753 18.3665L5.46124 12.9692C5.56834 12.6395 5.45102 12.2784 5.17063 12.0747L0.579352 8.73897C-0.0476187 8.28345 0.274601 7.29176 1.04958 7.29176H6.72471C7.07129 7.29176 7.37845 7.06859 7.48555 6.73897L9.23927 1.34161Z"
+                      fill="#FFED4F"
+                    />
+                  </svg>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.23927 1.34161C9.47875 0.604557 10.5215 0.604556 10.761 1.3416L12.5147 6.73897C12.6218 7.06859 12.9289 7.29176 13.2755 7.29176H18.9506C19.7256 7.29176 20.0478 8.28345 19.4209 8.73897L14.8296 12.0747C14.5492 12.2784 14.4319 12.6395 14.539 12.9692L16.2927 18.3665C16.5322 19.1036 15.6886 19.7165 15.0616 19.261L10.4703 15.9252C10.1899 15.7215 9.81027 15.7215 9.52988 15.9252L4.93861 19.261C4.31164 19.7165 3.46805 19.1036 3.70753 18.3665L5.46124 12.9692C5.56834 12.6395 5.45102 12.2784 5.17063 12.0747L0.579352 8.73897C-0.0476187 8.28345 0.274601 7.29176 1.04958 7.29176H6.72471C7.07129 7.29176 7.37845 7.06859 7.48555 6.73897L9.23927 1.34161Z"
+                      fill="#FFED4F"
+                    />
+                  </svg>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.23927 1.34161C9.47875 0.604557 10.5215 0.604556 10.761 1.3416L12.5147 6.73897C12.6218 7.06859 12.9289 7.29176 13.2755 7.29176H18.9506C19.7256 7.29176 20.0478 8.28345 19.4209 8.73897L14.8296 12.0747C14.5492 12.2784 14.4319 12.6395 14.539 12.9692L16.2927 18.3665C16.5322 19.1036 15.6886 19.7165 15.0616 19.261L10.4703 15.9252C10.1899 15.7215 9.81027 15.7215 9.52988 15.9252L4.93861 19.261C4.31164 19.7165 3.46805 19.1036 3.70753 18.3665L5.46124 12.9692C5.56834 12.6395 5.45102 12.2784 5.17063 12.0747L0.579352 8.73897C-0.0476187 8.28345 0.274601 7.29176 1.04958 7.29176H6.72471C7.07129 7.29176 7.37845 7.06859 7.48555 6.73897L9.23927 1.34161Z"
+                      fill="#FFED4F"
+                    />
+                  </svg>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.23927 1.34161C9.47875 0.604557 10.5215 0.604556 10.761 1.3416L12.5147 6.73897C12.6218 7.06859 12.9289 7.29176 13.2755 7.29176H18.9506C19.7256 7.29176 20.0478 8.28345 19.4209 8.73897L14.8296 12.0747C14.5492 12.2784 14.4319 12.6395 14.539 12.9692L16.2927 18.3665C16.5322 19.1036 15.6886 19.7165 15.0616 19.261L10.4703 15.9252C10.1899 15.7215 9.81027 15.7215 9.52988 15.9252L4.93861 19.261C4.31164 19.7165 3.46805 19.1036 3.70753 18.3665L5.46124 12.9692C5.56834 12.6395 5.45102 12.2784 5.17063 12.0747L0.579352 8.73897C-0.0476187 8.28345 0.274601 7.29176 1.04958 7.29176H6.72471C7.07129 7.29176 7.37845 7.06859 7.48555 6.73897L9.23927 1.34161Z"
+                      fill="#FFED4F"
+                    />
+                  </svg>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.23927 1.34161C9.47875 0.604557 10.5215 0.604556 10.761 1.3416L12.5147 6.73897C12.6218 7.06859 12.9289 7.29176 13.2755 7.29176H18.9506C19.7256 7.29176 20.0478 8.28345 19.4209 8.73897L14.8296 12.0747C14.5492 12.2784 14.4319 12.6395 14.539 12.9692L16.2927 18.3665C16.5322 19.1036 15.6886 19.7165 15.0616 19.261L10.4703 15.9252C10.1899 15.7215 9.81027 15.7215 9.52988 15.9252L4.93861 19.261C4.31164 19.7165 3.46805 19.1036 3.70753 18.3665L5.46124 12.9692C5.56834 12.6395 5.45102 12.2784 5.17063 12.0747L0.579352 8.73897C-0.0476187 8.28345 0.274601 7.29176 1.04958 7.29176H6.72471C7.07129 7.29176 7.37845 7.06859 7.48555 6.73897L9.23927 1.34161Z"
+                      fill="#8F8F8F"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div className={styles.reviews__cmnt__details__date}>
+                12 Jan 2021
+              </div>
+            </div>
+            <p className={styles.reviews__cmnt__msg}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div className={styles.reviews__cmnt__photos}>
+              <img src="" />
+              <img src="" />
+            </div>
+          </div>
+        </div>
+      </div> */}
     </div>
   );
 }
