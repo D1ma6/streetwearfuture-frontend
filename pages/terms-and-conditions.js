@@ -19,7 +19,6 @@ function termsAndConditions() {
       </Head>
       <div className={styles.pnc__inner}>
         <h1>Terms & Conditions</h1>
-
         <h2>Legal bits</h2>
         <p>
           We’re streetwearfuture.com Limited a company registered in England and
