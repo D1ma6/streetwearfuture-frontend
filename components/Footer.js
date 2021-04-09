@@ -2,6 +2,12 @@ import React from "react";
 import Link from "next/link";
 import styles from "../styles/Footer.module.scss";
 
+// icons
+import { Icon } from "@iconify/react";
+import bxlPaypal from "@iconify/icons-bx/bxl-paypal";
+import mastercardIcon from "@iconify/icons-brandico/mastercard";
+import visaIcon from "@iconify/icons-simple-icons/visa";
+
 function Footer({ bg }) {
   return (
     <footer
@@ -46,6 +52,11 @@ function Footer({ bg }) {
                 <a>Instagram</a>
               </Link>
             </span>
+            <span className={styles.nav__link}>
+              <Link href="https://twitter.com/strtwearftr">
+                <a>Twitter</a>
+              </Link>
+            </span>
           </div>
         </nav>
       </div>
@@ -56,6 +67,26 @@ function Footer({ bg }) {
               <a>© 2021 streetwearfuture</a>
             </Link>
           </span>
+          <div className={styles.nav__footer__cp}>
+            <span>
+              <Icon
+                icon={mastercardIcon}
+                style={{ color: "#1b1b1b", fontSize: "24px" }}
+              />
+            </span>
+            <span>
+              <Icon
+                icon={visaIcon}
+                style={{ color: "#1b1b1b", fontSize: "24px" }}
+              />
+            </span>
+            <span>
+              <Icon
+                icon={bxlPaypal}
+                style={{ color: "#1b1b1b", fontSize: "24px" }}
+              />
+            </span>
+          </div>
           <div className={styles.nav__footer__right}>
             <Link href="/returns-refunds">
               <a className={styles.nav__footer__right__title}>

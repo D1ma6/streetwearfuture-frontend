@@ -47,10 +47,16 @@
     &__container {
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
     &__title {
       font-size: 14px;
       color: $dark;
+    }
+    &__cp {
+      & > span {
+        margin: 0 10px;
+      }
     }
     &__right {
       display: flex;
@@ -84,6 +90,12 @@
         flex-direction: column;
         align-items: center;
         margin: 0 !important;
+      }
+      &__cp {
+        margin: 20px 0 0 0;
+        & > span {
+          margin: 0 10px;
+        }
       }
       &__right {
         margin: 20px 0 0 0;
