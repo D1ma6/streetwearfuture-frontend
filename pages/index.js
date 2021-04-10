@@ -6,14 +6,14 @@ import { useEffect, useState } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
 import { useRouter } from "next/router";
 
-function Home({ page }) {
+function Home({ page, allProducts }) {
   const products = page.products;
   const firstItemDisplay = page.firstItemDisplay;
   const secondItemDisplay = page.secondItemDisplay;
   const thirdItemDisplay = page.thirdItemDisplay;
 
   const router = useRouter();
-
+  console.log(allProducts);
   // width
   const { width } = useWindowDimensions();
   const [endPos, setEndPos] = useState(
@@ -129,12 +129,12 @@ function Home({ page }) {
     let firstLook = [];
     let secondLook = [];
 
-    products.map((product) => {
+    allProducts.map((product) => {
       page.FirstLook.map((look) =>
         product.slug == look.UIDOfTheItem ? firstLook.push(product) : this
       );
     });
-    products.map((product) => {
+    allProducts.map((product) => {
       page.SecondLook.map((look) =>
         product.slug == look.UIDOfTheItem ? secondLook.push(product) : this
       );
@@ -624,10 +624,13 @@ function Home({ page }) {
 export async function getStaticProps() {
   const page_res = await fetch(`${API_URL}/home-page`);
   const page = await page_res.json();
+  const allProducts_res = await fetch(`${API_URL}/products`);
+  const allProducts = await allProducts_res.json();
 
   return {
     props: {
       page,
+      allProducts,
     },
   };
 }

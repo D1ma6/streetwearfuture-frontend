@@ -3,8 +3,8 @@ import { API_URL, fromImageToUrl } from "../../utilities/urls";
 import Link from "next/link";
 import Head from "next/head";
 
-function look({ page }) {
-  const products = page.products;
+function look({ page, allProducts }) {
+  const products = allProducts;
 
   return (
     <div className="content">
@@ -48,9 +48,12 @@ function look({ page }) {
 export async function getStaticProps() {
   const page_res = await fetch(`${API_URL}/home-page`);
   const page = await page_res.json();
+  const allProducts_res = await fetch(`${API_URL}/products`);
+  const allProducts = await allProducts_res.json();
   return {
     props: {
       page,
+      allProducts,
     },
   };
 }
