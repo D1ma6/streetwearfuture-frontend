@@ -5,15 +5,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
 import { useRouter } from "next/router";
+import NewsPopUp from "../components/NewsPopUp";
+import cookie from "js-cookie";
 
-function Home({ page, allProducts }) {
+function Home({ page, allProducts, initialNews, initialPopup }) {
   const products = page.products;
   const firstItemDisplay = page.firstItemDisplay;
   const secondItemDisplay = page.secondItemDisplay;
   const thirdItemDisplay = page.thirdItemDisplay;
 
   const router = useRouter();
-  console.log(allProducts);
+
   // width
   const { width } = useWindowDimensions();
   const [endPos, setEndPos] = useState(
@@ -29,8 +31,8 @@ function Home({ page, allProducts }) {
   );
 
   // popups
-  const [popup, setPopUp] = useState(page.message.display);
-  const [news, setNews] = useState(page.news.display);
+  const [popup, setPopUp] = useState(() => JSON.parse(initialPopup));
+  const [news, setNews] = useState(() => JSON.parse(initialNews));
 
   // looks
   const [firstLook, setFirstLook] = useState([]);
@@ -169,7 +171,14 @@ function Home({ page, allProducts }) {
       {popup ? (
         <div className="popUp">
           <p>{page.message.message}</p>
-          <button onClick={() => setPopUp(false)}>x</button>
+          <button
+            onClick={() => {
+              setPopUp(false);
+              cookie.set("popup", false, { expires: 1 / 24 });
+            }}
+          >
+            x
+          </button>
         </div>
       ) : (
         ""
@@ -202,11 +211,19 @@ function Home({ page, allProducts }) {
                   onClick={() => {
                     setNews(false);
                     router.push("/products");
+                    cookie.set("news", false, { expires: 2 / 24 });
                   }}
                 >
                   View new arrivals
                 </button>
-                <button onClick={() => setNews(false)}>Close</button>
+                <button
+                  onClick={() => {
+                    setNews(false);
+                    cookie.set("news", false, { expires: 2 / 24 });
+                  }}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
@@ -621,7 +638,7 @@ function Home({ page, allProducts }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps({ req, res }) {
   const page_res = await fetch(`${API_URL}/home-page`);
   const page = await page_res.json();
   const allProducts_res = await fetch(`${API_URL}/products`);
@@ -631,6 +648,8 @@ export async function getStaticProps() {
     props: {
       page,
       allProducts,
+      initialNews: req.cookies.news,
+      initialPopup: req.cookies.popup,
     },
   };
 }
