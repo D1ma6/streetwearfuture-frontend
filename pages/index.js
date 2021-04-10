@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
 import { useRouter } from "next/router";
-import NewsPopUp from "../components/NewsPopUp";
 import cookie from "js-cookie";
 
 function Home({ page, allProducts, initialNews, initialPopup }) {
@@ -211,7 +210,9 @@ function Home({ page, allProducts, initialNews, initialPopup }) {
                   onClick={() => {
                     setNews(false);
                     router.push("/products");
-                    cookie.set("news", false, { expires: 2 / 24 });
+                    cookie.set("news", JSON.stringify(false), {
+                      expires: 2 / 24,
+                    });
                   }}
                 >
                   View new arrivals
@@ -219,7 +220,9 @@ function Home({ page, allProducts, initialNews, initialPopup }) {
                 <button
                   onClick={() => {
                     setNews(false);
-                    cookie.set("news", false, { expires: 2 / 24 });
+                    cookie.set("news", JSON.stringify(false), {
+                      expires: 2 / 24,
+                    });
                   }}
                 >
                   Close
@@ -648,8 +651,8 @@ export async function getServerSideProps({ req, res }) {
     props: {
       page,
       allProducts,
-      initialNews: req.cookies.news,
-      initialPopup: req.cookies.popup,
+      initialNews: req.cookies.news || true,
+      initialPopup: req.cookies.popup || true,
     },
   };
 }
