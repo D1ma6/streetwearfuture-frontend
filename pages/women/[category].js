@@ -19,6 +19,7 @@ function category({ products }) {
     "Yellow",
     "Red",
     "Blue",
+    "Light Blue",
     "Cargo",
     "Navy",
     "Green",
