@@ -35,7 +35,10 @@ function Navbar({ nav, setNav, list, setList }) {
     <>
       {nav && (
         <div className={`${styles.menuNav} ${styles.nav__open}`}>
-          <nav className={`${styles.nav} ${styles.nav__open__nav}`}>
+          <nav
+            className={`${styles.nav} ${styles.nav__open__nav}`}
+            style={{ display: "flex" }}
+          >
             <Link href="/products">
               <a
                 onClick={() => {
