@@ -1,7 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import { API_URL, fromImageToUrl } from "../utilities/urls";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
@@ -9,7 +8,10 @@ import { useRouter } from "next/router";
 
 function Home({ page }) {
   const products = page.products;
-  const displayProduct = page.product;
+  const firstItemDisplay = page.firstItemDisplay;
+  const secondItemDisplay = page.secondItemDisplay;
+  const thirdItemDisplay = page.thirdItemDisplay;
+
   const router = useRouter();
 
   // width
@@ -213,36 +215,107 @@ function Home({ page }) {
         ""
       )}
 
-      <div>
+      <div className={styles.displayItem__container}>
         <div className={styles.displayItem}>
-          <img src={fromImageToUrl(displayProduct.images[0].image)} />
+          <img src={fromImageToUrl(firstItemDisplay.images[0].image)} />
 
           <div>
             <h1 className={styles.displayItem__title}>
-              {displayProduct.title}
+              {firstItemDisplay.title}
             </h1>
-            {displayProduct.onSale ? (
+            {firstItemDisplay.onSale ? (
               <div className="product__newPrice">
-                <Link href={`/products/${displayProduct.slug}`}>
+                <Link href={`/products/${firstItemDisplay.slug}`}>
                   <button className={styles.displayItem__btn}>
                     View product
                   </button>
                 </Link>
-                <h2 className="product__price">{`£${displayProduct.newPrice}`}</h2>
+                <h2 className="product__price">{`£${firstItemDisplay.newPrice}`}</h2>
                 <p
                   className={styles.displayItem__p}
-                >{`£${displayProduct.price}`}</p>
+                >{`£${firstItemDisplay.price}`}</p>
                 <span>{`(-%${Math.round(
-                  100 - (displayProduct.newPrice / displayProduct.price) * 100
+                  100 -
+                    (firstItemDisplay.newPrice / firstItemDisplay.price) * 100
                 )})`}</span>
               </div>
             ) : (
               <div className="product__newPrice">
-                <h2 className="product__price">{`£${displayProduct.price}`}</h2>
+                <h2 className="product__price">{`£${firstItemDisplay.price}`}</h2>
               </div>
             )}
           </div>
         </div>
+
+        {width > 700 ? (
+          <div className={styles.displayItem}>
+            <img src={fromImageToUrl(secondItemDisplay.images[0].image)} />
+
+            <div>
+              <h1 className={styles.displayItem__title}>
+                {secondItemDisplay.title}
+              </h1>
+              {secondItemDisplay.onSale ? (
+                <div className="product__newPrice">
+                  <Link href={`/products/${secondItemDisplay.slug}`}>
+                    <button className={styles.displayItem__btn}>
+                      View product
+                    </button>
+                  </Link>
+                  <h2 className="product__price">{`£${secondItemDisplay.newPrice}`}</h2>
+                  <p
+                    className={styles.displayItem__p}
+                  >{`£${secondItemDisplay.price}`}</p>
+                  <span>{`(-%${Math.round(
+                    100 -
+                      (secondItemDisplay.newPrice / secondItemDisplay.price) *
+                        100
+                  )})`}</span>
+                </div>
+              ) : (
+                <div className="product__newPrice">
+                  <h2 className="product__price">{`£${secondItemDisplay.price}`}</h2>
+                </div>
+              )}
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+        {width > 1140 ? (
+          <div className={styles.displayItem}>
+            <img src={fromImageToUrl(thirdItemDisplay.images[0].image)} />
+
+            <div>
+              <h1 className={styles.displayItem__title}>
+                {thirdItemDisplay.title}
+              </h1>
+              {thirdItemDisplay.onSale ? (
+                <div className="product__newPrice">
+                  <Link href={`/products/${thirdItemDisplay.slug}`}>
+                    <button className={styles.displayItem__btn}>
+                      View product
+                    </button>
+                  </Link>
+                  <h2 className="product__price">{`£${thirdItemDisplay.newPrice}`}</h2>
+                  <p
+                    className={styles.displayItem__p}
+                  >{`£${thirdItemDisplay.price}`}</p>
+                  <span>{`(-%${Math.round(
+                    100 -
+                      (thirdItemDisplay.newPrice / thirdItemDisplay.price) * 100
+                  )})`}</span>
+                </div>
+              ) : (
+                <div className="product__newPrice">
+                  <h2 className="product__price">{`£${thirdItemDisplay.price}`}</h2>
+                </div>
+              )}
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div className={`${styles.home__main} ${"content"}`}>
         <div className="product__container">

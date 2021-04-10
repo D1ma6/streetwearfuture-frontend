@@ -151,6 +151,10 @@
   width: 100%;
   height: 400px;
   position: relative;
+
+  &__container {
+    display: flex;
+  }
   & > div {
     z-index: 2;
     position: absolute;
@@ -172,6 +176,9 @@
     border: none;
     border-radius: 5px;
     color: $dark;
+    &:hover {
+      cursor: pointer;
+    }
   }
   &__p {
     color: $lightGrey !important;
