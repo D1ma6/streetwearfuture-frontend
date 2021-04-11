@@ -6,8 +6,36 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 const arrSize = ["XS", "S", "M", "L", "XL"];
-const arrColor = ["Black", "White", "Yellow", "Red", "Cargo", "Navy"];
+const arrColor = [
+  "Black",
+  "White",
+  "Yellow",
+  "Red",
+  "Blue",
+  "Light Blue",
+  "Cargo",
+  "Navy",
+  "Green",
+  "Army Green",
+  "Lime",
+];
 const arrShoe = ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10"];
+const arrPhoneSize = [
+  "iPhone 6",
+  "iPhone 7",
+  "iPhone 8",
+  "iPhone X",
+  "iPhone XR",
+  "iPhone XS",
+  "iPhone XS Max",
+  "iPhone 11",
+  "iPhone 11 Pro",
+  "iPhone 11Pro Max",
+  "iPhone 12mini",
+  "iPhone 12",
+  "iPhone 12 Pro",
+  "iPhone 12Pro Max",
+];
 
 function category({ products }) {
   const router = useRouter();
@@ -36,6 +64,22 @@ function category({ products }) {
     "9",
     "9.5",
     "10",
+  ]);
+  const [phoneSize, setPhoneSize] = useState([
+    "iPhone 6",
+    "iPhone 7",
+    "iPhone 8",
+    "iPhone X",
+    "iPhone XR",
+    "iPhone XS",
+    "iPhone XS Max",
+    "iPhone 11",
+    "iPhone 11 Pro",
+    "iPhone 11Pro Max",
+    "iPhone 12mini",
+    "iPhone 12",
+    "iPhone 12 Pro",
+    "iPhone 12Pro Max",
   ]);
 
   const checkSize = (currItem) => {
@@ -94,7 +138,28 @@ function category({ products }) {
       }
     }
   };
-  console.log(products);
+
+  console.log(
+    products.filter((product) => {
+      return product.sizes[0].size != null
+        ? product.sizes.some((size) =>
+            sizeArr.some((sizeArr) => size.size == sizeArr)
+          )
+        : product.sizes[0].shoeSize != null
+        ? product.sizes.some((size) =>
+            shoe.some((arShoe) => size.shoeSize == arShoe)
+          )
+        : product.sizes[0].phoneSize != null
+        ? product.sizes.some((size) =>
+            phoneSize.some(
+              (arShoe) => size.phoneSize.replace(/0/g, " ") == arShoe
+            )
+          )
+        : product.sizes.some((size) =>
+            phoneSize.some((arShoe) => size.phoneSize == arShoe)
+          );
+    })
+  );
   return (
     <div className="content">
       <Head>
@@ -152,8 +217,20 @@ function category({ products }) {
               ? product.sizes.some((size) =>
                   sizeArr.some((sizeArr) => size.size == sizeArr)
                 )
-              : product.sizes.some((size) =>
+              : product.sizes[0].shoeSize != null
+              ? product.sizes.some((size) =>
                   shoe.some((arShoe) => size.shoeSize == arShoe)
+                )
+              : product.sizes[0].phoneSize != null
+              ? product.sizes.some((size) =>
+                  phoneSize.some(
+                    (arShoe) => size.phoneSize.replace(/0/g, " ") == arShoe
+                  )
+                )
+              : product.sizes.some((size) =>
+                  phoneSize.some(
+                    (arShoe) => size.phoneSize.replace(/0/g, " ") == arShoe
+                  )
                 );
           })
           .filter((product) =>

@@ -6,7 +6,19 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 const arrSize = ["XS", "S", "M", "L", "XL"];
-const arrColor = ["Black", "White", "Yellow", "Red", "Cargo", "Navy"];
+const arrColor = [
+  "Black",
+  "White",
+  "Yellow",
+  "Red",
+  "Blue",
+  "Light Blue",
+  "Cargo",
+  "Navy",
+  "Green",
+  "Army Green",
+  "Lime",
+];
 const arrShoe = ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10"];
 
 function category({ products }) {
@@ -23,6 +35,7 @@ function category({ products }) {
     "Cargo",
     "Navy",
     "Green",
+    "Army Green",
     "Lime",
   ]);
   const [shoe, setShoe] = useState([
@@ -150,8 +163,16 @@ function category({ products }) {
               ? product.sizes.some((size) =>
                   sizeArr.some((sizeArr) => size.size == sizeArr)
                 )
-              : product.sizes.some((size) =>
+              : product.sizes[0].shoeSize != null
+              ? product.sizes.some((size) =>
                   shoe.some((arShoe) => size.shoeSize == arShoe)
+                )
+              : product.sizes[0].phoneSize != null
+              ? product.sizes.some((size) =>
+                  shoe.some((arShoe) => size.phoneSize == arShoe)
+                )
+              : product.sizes.some((size) =>
+                  shoe.some((arShoe) => size.phoneSize == arShoe)
                 );
           })
           .filter((product) =>
