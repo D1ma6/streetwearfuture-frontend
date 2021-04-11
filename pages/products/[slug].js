@@ -185,6 +185,21 @@ function Product({ product, products }) {
           name="keywords"
           content="street, streetwear, fashion, clothes, street wear fashion, techwear, tech, wear, clothing, brand, shop, shopping, items, products"
         />
+
+        <meta property="og:title" content="Facebook T-Shirt" />
+        <meta
+          property="og:description"
+          content="Unisex Facebook T-shirt, Small"
+        />
+        <meta property="og:url" content={`${API_URL}/${product.slug}`} />
+        <meta property="og:image" content="https://example.org/facebook.jpg" />
+        <meta property="product:brand" content="Streetwearfuture" />
+        <meta property="product:availability" content="in stock" />
+        <meta property="product:condition" content="new" />
+        <meta property="product:price:amount" content="100" />
+        <meta property="product:price:currency" content="GBP" />
+        <meta property="product:retailer_item_id" content={product.id} />
+        <meta property="product:item_group_id" content={product.category} />
       </Head>
       <div className={`${styles.product}`}>
         <div className={styles.product__left}>
