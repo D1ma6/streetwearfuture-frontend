@@ -167,9 +167,20 @@ function Product({ product, products }) {
     ).style.transform = `translateX(0%)`;
   }, [product]);
 
-  let sizesArr = product.sizes
-    .map((size) => `${size.size}|`)
-    .filter((e) => e !== `${size}|`);
+  let sizesArr =
+    product.sizes[0].size != null
+      ? product.sizes
+          .map((size) => `${size.size.replace(/0/g, " ")}|`)
+          .filter((e) => e !== `${size}|`)
+      : product.sizes[0].shoeSize != null
+      ? product.sizes
+          .map((size) => `${size.shoeSize.replace(/0/g, " ")}|`)
+          .filter((e) => e !== `${size}|`)
+      : product.sizes[0].phoneSize != null
+      ? product.sizes
+          .map((size) => `${size.phoneSize.replace(/0/g, " ")}|`)
+          .filter((e) => e !== `${size}|`)
+      : "One size";
   sizesArr.unshift(`${size}|`);
   let colorsArr = product.colors
     .map((color) => `${color.color}|`)
@@ -186,13 +197,13 @@ function Product({ product, products }) {
           content="street, streetwear, fashion, clothes, street wear fashion, techwear, tech, wear, clothing, brand, shop, shopping, items, products"
         />
 
-        <meta property="og:title" content="Facebook T-Shirt" />
-        <meta
-          property="og:description"
-          content="Unisex Facebook T-shirt, Small"
-        />
+        <meta property="og:title" content={product.title} />
+        <meta property="og:description" content={product.description} />
         <meta property="og:url" content={`${API_URL}/${product.slug}`} />
-        <meta property="og:image" content="https://example.org/facebook.jpg" />
+        <meta
+          property="og:image"
+          content={fromImageToUrl(product.images[0].image)}
+        />
         <meta property="product:brand" content="Streetwearfuture" />
         <meta property="product:availability" content="in stock" />
         <meta property="product:condition" content="new" />
@@ -211,9 +222,7 @@ function Product({ product, products }) {
             <div className={styles.product__sizes}>
               <h3 className={styles.product__opt__title}>Size:</h3>
               <div>
-                {categories
-                  .slice(11, 17)
-                  .some((category) => category == product.category)
+                {product.sizes[0].size != null
                   ? product.sizes.map((size) => (
                       <button
                         key={size.id}
@@ -225,10 +234,11 @@ function Product({ product, products }) {
                         }}
                         className={`${styles.product__opt} ${styles.sizes}`}
                       >
-                        {size.shoeSize}
+                        {size.size.replace(/0/g, " ")}
                       </button>
                     ))
-                  : product.sizes.map((size) => (
+                  : product.sizes[0].shoeSize != null
+                  ? product.sizes.map((size) => (
                       <button
                         key={size.id}
                         onClick={(e) => {
@@ -239,9 +249,25 @@ function Product({ product, products }) {
                         }}
                         className={`${styles.product__opt} ${styles.sizes}`}
                       >
-                        {size.size}
+                        {size.shoeSize.replace(/0/g, " ")}
                       </button>
-                    ))}
+                    ))
+                  : product.sizes[0].phoneSize != null
+                  ? product.sizes.map((size) => (
+                      <button
+                        key={size.id}
+                        onClick={(e) => {
+                          checkSize(
+                            document.querySelectorAll(`.${styles.sizes}`),
+                            e.target
+                          );
+                        }}
+                        className={`${styles.product__opt} ${styles.sizes}`}
+                      >
+                        {size.phoneSize.replace(/0/g, " ")}
+                      </button>
+                    ))
+                  : ""}
               </div>
             </div>
           </div>
@@ -313,7 +339,7 @@ function Product({ product, products }) {
             <h1>Free Shipping</h1>
             <p>
               to United Kingdom via Royal mail Standard Shipping Estimated
-              Delivery: 7-23 days
+              Delivery: 7-31 days
             </p>
           </div>
         </div>
@@ -400,81 +426,142 @@ function Product({ product, products }) {
       </div>
       <div className={styles.spec}>
         <h1 className={styles.spec__title}>Specifications</h1>
-
         <div className={styles.spec__container}>
-          <div className={styles.spec__container_c}>
+          {product.style != null ? (
             <p className={styles.spec__item}>
               <span>Style: </span>
               {`${product.style}`}
             </p>
+          ) : (
+            ""
+          )}
+
+          {product.weistType != null ? (
             <p className={styles.spec__item}>
-              <span>Waist Type: </span>
+              <span>Weist Type: </span>
               {`${product.weistType}`}
             </p>
+          ) : (
+            ""
+          )}
+
+          {product.material != null ? (
             <p className={styles.spec__item}>
               <span>Material: </span>
               {`${product.material}`}
             </p>
+          ) : (
+            ""
+          )}
+
+          {product.fitType != null ? (
             <p className={styles.spec__item}>
-              <span>Fit type: </span>
+              <span>Fit Type: </span>
               {`${product.fitType}`}
             </p>
-          </div>
+          ) : (
+            ""
+          )}
 
-          <div className={styles.spec__container_c}>
+          {product.lengths != null ? (
             <p className={styles.spec__item}>
-              <span>Length: </span>
+              <span>Lengths: </span>
               {`${product.lengths}`}
             </p>
+          ) : (
+            ""
+          )}
+
+          {product.closureType != null ? (
             <p className={styles.spec__item}>
-              <span>Closure Type: </span>
+              <span>Clouser Type: </span>
               {`${product.closureType}`}
             </p>
+          ) : (
+            ""
+          )}
+
+          {product.colors[0].color != null ? (
             <p className={styles.spec__item}>
               <span>Colors: </span>
               {product.colors.map((color) => {
                 return `${color.color}, `;
               })}
             </p>
+          ) : (
+            ""
+          )}
+
+          {product.sizes[0].size != null ? (
             <p className={styles.spec__item}>
               <span>Sizes: </span>
-              {product.sizes[0].size != null
-                ? String(product.sizes.map((size) => `${size.size}`))
-                : String(product.sizes.map((size) => `${size.shoeSize}`))}
+              {String(product.sizes.map((size) => `${size.size}`))}
             </p>
-          </div>
+          ) : product.sizes[0].shoeSize != null ? (
+            <p className={styles.spec__item}>
+              <span>Sizes: </span>
+              {String(product.sizes.map((size) => `${size.shoeSize}`))}
+            </p>
+          ) : product.sizes[0].phoneSize != null ? (
+            <p className={styles.spec__item}>
+              <span>Sizes: </span>
+              {String(
+                product.sizes.map(
+                  (size) => `${size.phoneSize.replace(/0/g, " ")}`
+                )
+              )}
+            </p>
+          ) : (
+            ""
+          )}
 
-          <div className={styles.spec__container_c}>
+          {product.gender != null ? (
             <p className={styles.spec__item}>
               <span>Gender: </span>
               {`${product.gender}`}
             </p>
+          ) : (
+            ""
+          )}
+
+          {product.fashion != null ? (
             <p className={styles.spec__item}>
               <span>Fashion: </span>
               {`${product.fashion}`}
             </p>
-            <p className={styles.spec__item}>
-              <span>Fit Type: </span>
-              {`${product.fitType}`}
-            </p>
-          </div>
+          ) : (
+            ""
+          )}
 
-          <div className={styles.spec__container_c}>
+          {product.thickness != null ? (
             <p className={styles.spec__item}>
               <span>Thickness: </span>
               {`${product.thickness}`}
             </p>
+          ) : (
+            ""
+          )}
+
+          {product.fabricType != null ? (
             <p className={styles.spec__item}>
               <span>Fabric Type: </span>
               {`${product.fabricType}`}
             </p>
+          ) : (
+            ""
+          )}
+
+          {product.category != null ? (
             <p className={styles.spec__item}>
               <span>Category: </span>
               {`${product.category}`}
             </p>
-          </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
+
       <div className="product__container">
         <div className="product__container__title">Trending items</div>
         {products.slice(display.start, display.end).map((product) => (

@@ -300,15 +300,19 @@
     justify-content: space-between;
     flex-wrap: wrap;
     max-width: 1032px;
+    max-height: 120px;
+    flex-direction: column;
 
     color: $white;
   }
   &__item {
     margin: 20px 0 0 0;
     font-size: 14px;
-
+    display: flex;
+    max-width: 200px;
     & > span {
       color: $grey;
+      margin: 0 5px 0 0;
     }
   }
 }
@@ -474,6 +478,10 @@
   }
   .spec {
     margin: 10vh 0 0 0;
+
+    &__container {
+      max-height: 180px;
+    }
   }
 }
 @media only screen and (max-width: 940px) {
@@ -502,6 +510,13 @@
           margin: 0 20px 0 0;
         }
       }
+    }
+  }
+}
+@media only screen and (max-width: 870px) {
+  .spec {
+    &__container {
+      max-height: 280px;
     }
   }
 }
