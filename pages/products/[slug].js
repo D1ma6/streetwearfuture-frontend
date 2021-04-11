@@ -427,7 +427,7 @@ function Product({ product, products }) {
       <div className={styles.spec}>
         <h1 className={styles.spec__title}>Specifications</h1>
         <div className={styles.spec__container}>
-          {product.style != null ? (
+          {product.style != null && product.style.length != 0 ? (
             <p className={styles.spec__item}>
               <span>Style: </span>
               {`${product.style}`}
@@ -436,7 +436,7 @@ function Product({ product, products }) {
             ""
           )}
 
-          {product.weistType != null ? (
+          {product.weistType != null && product.weistType.length != 0 ? (
             <p className={styles.spec__item}>
               <span>Weist Type: </span>
               {`${product.weistType}`}
@@ -445,7 +445,7 @@ function Product({ product, products }) {
             ""
           )}
 
-          {product.material != null ? (
+          {product.material != null && product.material.length != 0 ? (
             <p className={styles.spec__item}>
               <span>Material: </span>
               {`${product.material}`}
@@ -454,7 +454,7 @@ function Product({ product, products }) {
             ""
           )}
 
-          {product.fitType != null ? (
+          {product.fitType != null && product.fitType.length != 0 ? (
             <p className={styles.spec__item}>
               <span>Fit Type: </span>
               {`${product.fitType}`}
@@ -463,7 +463,7 @@ function Product({ product, products }) {
             ""
           )}
 
-          {product.lengths != null ? (
+          {product.lengths != null && product.lengths.length != 0 ? (
             <p className={styles.spec__item}>
               <span>Lengths: </span>
               {`${product.lengths}`}
@@ -472,7 +472,7 @@ function Product({ product, products }) {
             ""
           )}
 
-          {product.closureType != null ? (
+          {product.closureType != null && product.closureType.length != 0 ? (
             <p className={styles.spec__item}>
               <span>Clouser Type: </span>
               {`${product.closureType}`}
@@ -524,7 +524,7 @@ function Product({ product, products }) {
             ""
           )}
 
-          {product.fashion != null ? (
+          {product.fashion != null && product.fashion.length != 0 ? (
             <p className={styles.spec__item}>
               <span>Fashion: </span>
               {`${product.fashion}`}
@@ -533,7 +533,7 @@ function Product({ product, products }) {
             ""
           )}
 
-          {product.thickness != null ? (
+          {product.thickness != null && product.thickness.length != 0 ? (
             <p className={styles.spec__item}>
               <span>Thickness: </span>
               {`${product.thickness}`}
@@ -542,7 +542,7 @@ function Product({ product, products }) {
             ""
           )}
 
-          {product.fabricType != null ? (
+          {product.fabricType != null && product.fabricType.length != 0 ? (
             <p className={styles.spec__item}>
               <span>Fabric Type: </span>
               {`${product.fabricType}`}
@@ -551,7 +551,7 @@ function Product({ product, products }) {
             ""
           )}
 
-          {product.category != null ? (
+          {product.category != null && product.category.length != 0 ? (
             <p className={styles.spec__item}>
               <span>Category: </span>
               {`${product.category}`}
