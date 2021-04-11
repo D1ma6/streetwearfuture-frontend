@@ -51,7 +51,7 @@ class MyDocument extends Document {
                 t.src=v;s=b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t,s)}(window, document,'script',
                 'https://connect.facebook.net/en_US/fbevents.js');
-                fbq('init', ${FB_PIXEL_ID});
+                fbq('init', 492727218528709);
               `,
             }}
           />
@@ -60,7 +60,7 @@ class MyDocument extends Document {
               height="1"
               width="1"
               style={{ display: "none" }}
-              src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+              src={`https://www.facebook.com/tr?id=492727218528709&ev=PageView&noscript=1`}
             />
           </noscript>
         </Head>
