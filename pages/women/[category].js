@@ -139,27 +139,6 @@ function category({ products }) {
     }
   };
 
-  console.log(
-    products.filter((product) => {
-      return product.sizes[0].size != null
-        ? product.sizes.some((size) =>
-            sizeArr.some((sizeArr) => size.size == sizeArr)
-          )
-        : product.sizes[0].shoeSize != null
-        ? product.sizes.some((size) =>
-            shoe.some((arShoe) => size.shoeSize == arShoe)
-          )
-        : product.sizes[0].phoneSize != null
-        ? product.sizes.some((size) =>
-            phoneSize.some(
-              (arShoe) => size.phoneSize.replace(/0/g, " ") == arShoe
-            )
-          )
-        : product.sizes.some((size) =>
-            phoneSize.some((arShoe) => size.phoneSize == arShoe)
-          );
-    })
-  );
   return (
     <div className="content">
       <Head>
