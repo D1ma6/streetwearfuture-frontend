@@ -4,7 +4,6 @@ import { API_URL, fromImageToUrl } from "../utilities/urls";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
-import { useRouter } from "next/router";
 import cookie from "js-cookie";
 
 function Home({ page, allProducts, initialNews, initialPopup }) {
@@ -12,8 +11,6 @@ function Home({ page, allProducts, initialNews, initialPopup }) {
   const firstItemDisplay = page.firstItemDisplay;
   const secondItemDisplay = page.secondItemDisplay;
   const thirdItemDisplay = page.thirdItemDisplay;
-
-  const router = useRouter();
 
   // width
   const { width } = useWindowDimensions();
