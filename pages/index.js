@@ -472,7 +472,17 @@ function Home({ page, allProducts, initialNews, initialPopup }) {
         <div className="product__container">
           <div className="product__container__title">Accessories</div>
           {allProducts
-            .filter((product) => product.category == "Accessories")
+            .filter(
+              (product) =>
+                product.category == "Accessories" ||
+                product.category == "Bracelets" ||
+                product.category == "Bags" ||
+                product.category == "Belts" ||
+                product.category == "Masks" ||
+                product.category == "Gloves" ||
+                product.category == "Laces" ||
+                product.category == "Scarves"
+            )
             .slice(displayThird.start, displayThird.end)
             .map((product) => (
               <Link key={product.id} href={`/products/${product.slug}`}>
@@ -534,7 +544,15 @@ function Home({ page, allProducts, initialNews, initialPopup }) {
               {new Array(
                 Math.ceil(
                   products.filter(
-                    (product) => product.category == "Accessories"
+                    (product) =>
+                      product.category == "Accessories" ||
+                      product.category == "Bracelets" ||
+                      product.category == "Bags" ||
+                      product.category == "Belts" ||
+                      product.category == "Masks" ||
+                      product.category == "Gloves" ||
+                      product.category == "Laces" ||
+                      product.category == "Scarves"
                   ).length / endPos
                 )
               )
@@ -547,7 +565,15 @@ function Home({ page, allProducts, initialNews, initialPopup }) {
                   if (
                     sliderThird <
                     products.filter(
-                      (product) => product.category == "Accessories"
+                      (product) =>
+                        product.category == "Accessories" ||
+                        product.category == "Bracelets" ||
+                        product.category == "Bags" ||
+                        product.category == "Belts" ||
+                        product.category == "Masks" ||
+                        product.category == "Gloves" ||
+                        product.category == "Laces" ||
+                        product.category == "Scarves"
                     ).length /
                       endPos
                   ) {
