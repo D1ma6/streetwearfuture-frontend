@@ -175,7 +175,7 @@
   &__details {
     display: flex;
     flex-direction: column;
-    margin: auto 0 0 0;
+    margin: 20px 0 0 0;
     & > h1 {
       font-size: 14px;
       font-weight: 500;
@@ -460,9 +460,6 @@
     }
     &__slider {
       width: 420px;
-    }
-    &__details {
-      margin: 20px 0 0 0;
     }
     &__price {
       margin: 20px 0 0 0;
