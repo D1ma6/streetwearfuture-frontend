@@ -21,6 +21,7 @@ const categories = [
   "Slippers",
   "Trainers",
   "Accessories",
+  "Bracelets",
   "Bags",
   "Belts",
   "Masks",
@@ -78,7 +79,7 @@ function ListItems({ list, listNav, setList }) {
                 Shop All Accessories & Lifestyle
               </h1>
               <div>
-                {categories.slice(17, 24).map((item) => (
+                {categories.slice(17, 25).map((item) => (
                   <Link href={`/men/${item}`} key={item}>
                     <a onClick={() => setList(null)} key={item}>
                       {item}
@@ -124,7 +125,7 @@ function ListItems({ list, listNav, setList }) {
                 Shop All Accessories & Lifestyle
               </h1>
               <div>
-                {categories.slice(17, 24).map((item) => (
+                {categories.slice(17, 25).map((item) => (
                   <Link href={`/women/${item}`} key={item}>
                     <a onClick={() => setList(null)} key={item}>
                       {item}
