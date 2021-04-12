@@ -803,8 +803,8 @@ export async function getServerSideProps({ req, res }) {
     props: {
       page,
       allProducts,
-      initialNews: req.cookies.news || true,
-      initialPopup: req.cookies.popup || true,
+      initialNews: req.cookies.news || false,
+      initialPopup: req.cookies.popup || false,
     },
   };
 }
