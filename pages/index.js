@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
 import cookie from "js-cookie";
 
-function Home({ page, allProducts, initialNews, initialPopup }) {
+function Home({ page, allProducts }) {
   const products = page.products;
   const firstItemDisplay = page.firstItemDisplay;
   const secondItemDisplay = page.secondItemDisplay;
@@ -27,8 +27,8 @@ function Home({ page, allProducts, initialNews, initialPopup }) {
   );
 
   // popups
-  const [popup, setPopUp] = useState(() => JSON.parse(initialPopup));
-  const [news, setNews] = useState(() => JSON.parse(initialNews));
+  // const [popup, setPopUp] = useState(() => JSON.parse(initialPopup));
+  // const [news, setNews] = useState(() => JSON.parse(initialNews));
 
   // looks
   const [firstLook, setFirstLook] = useState([]);
@@ -819,7 +819,7 @@ function Home({ page, allProducts, initialNews, initialPopup }) {
   );
 }
 
-export async function getServerSideProps({ req, res }) {
+export async function getStaticProps() {
   const page_res = await fetch(`${API_URL}/home-page`);
   const page = await page_res.json();
   const allProducts_res = await fetch(`${API_URL}/products`);
@@ -829,8 +829,6 @@ export async function getServerSideProps({ req, res }) {
     props: {
       page,
       allProducts,
-      initialNews: req.cookies.news || false,
-      initialPopup: req.cookies.popup || false,
     },
   };
 }
