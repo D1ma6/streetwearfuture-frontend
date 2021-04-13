@@ -4,7 +4,7 @@ import { API_URL, fromImageToUrl } from "../utilities/urls";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
-import cookie from "js-cookie";
+// import cookie from "js-cookie";
 
 function Home({ page, allProducts }) {
   const products = page.products;
@@ -170,15 +170,15 @@ function Home({ page, allProducts }) {
     setSecondLook(secondLook);
     setFirstLook(firstLook);
 
-    news
-      ? (document.querySelector("body").style.overflowY = "hidden")
-      : (document.querySelector("body").style.overflowY = "scroll");
+    // news
+    //   ? (document.querySelector("body").style.overflowY = "hidden")
+    //   : (document.querySelector("body").style.overflowY = "scroll");
   }, []);
-  useEffect(() => {
-    news
-      ? (document.querySelector("body").style.overflowY = "hidden")
-      : (document.querySelector("body").style.overflowY = "scroll");
-  }, [news]);
+  // useEffect(() => {
+  //   news
+  //     ? (document.querySelector("body").style.overflowY = "hidden")
+  //     : (document.querySelector("body").style.overflowY = "scroll");
+  // }, [news]);
 
   return (
     <div className={styles.home}>
