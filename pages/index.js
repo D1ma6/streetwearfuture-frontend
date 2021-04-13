@@ -193,7 +193,7 @@ function Home({ page, allProducts }) {
           content="street, streetwear, fashion, clothes, street wear fashion, techwear, tech, wear, clothing, brand, shop, shopping"
         />
       </Head>
-      {popup ? (
+      {/* {popup ? (
         <div className="popUp">
           <p>{page.message.message}</p>
           <button
@@ -259,7 +259,7 @@ function Home({ page, allProducts }) {
         </div>
       ) : (
         ""
-      )}
+      )} */}
 
       <div className={styles.displayItem__container}>
         <div className={styles.displayItem}>
