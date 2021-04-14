@@ -612,7 +612,15 @@ function Home({ page, allProducts }) {
                 {sliderThird} /{" "}
                 {Math.ceil(
                   products.filter(
-                    (product) => product.category == "Accessories"
+                    (product) =>
+                      product.category == "Accessories" ||
+                      product.category == "Bracelets" ||
+                      product.category == "Bags" ||
+                      product.category == "Belts" ||
+                      product.category == "Masks" ||
+                      product.category == "Gloves" ||
+                      product.category == "Laces" ||
+                      product.category == "Scarves"
                   ).length / endPos
                 )}
               </span>
