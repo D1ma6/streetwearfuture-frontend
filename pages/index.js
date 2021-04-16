@@ -330,7 +330,7 @@ function Home({ page, allProducts }) {
         )}
         {width > 1140 ? (
           <div className={styles.displayItem}>
-            <img src={fromImageToUrl(thirdItemDisplay.images[0].image)} />
+            <img src={fromImageToUrl(thirdItemDisplay.images[6].image)} />
 
             <div>
               <h1 className={styles.displayItem__title}>
@@ -378,9 +378,9 @@ function Home({ page, allProducts }) {
                     <div className="product__newPrice">
                       <h2 className="product__price">{`£${product.newPrice}`}</h2>
                       <p>{`£${product.price}`}</p>
-                      <span>{`(-%${Math.round(
+                      <span>{`(-${Math.round(
                         100 - (product.newPrice / product.price) * 100
-                      )})`}</span>
+                      )}%)`}</span>
                     </div>
                   ) : (
                     <h2 className="product__price">{`£${product.price}`}</h2>
@@ -496,9 +496,9 @@ function Home({ page, allProducts }) {
                       <div className="product__newPrice">
                         <h2 className="product__price">{`£${product.newPrice}`}</h2>
                         <p>{`£${product.price}`}</p>
-                        <span>{`(-%${Math.round(
+                        <span>{`(-${Math.round(
                           100 - (product.newPrice / product.price) * 100
-                        )})`}</span>
+                        )}%)`}</span>
                       </div>
                     ) : (
                       <h2 className="product__price">{`£${product.price}`}</h2>
@@ -645,9 +645,9 @@ function Home({ page, allProducts }) {
                       <div className="product__newPrice">
                         <h2 className="product__price">{`£${product.newPrice}`}</h2>
                         <p>{`£${product.price}`}</p>
-                        <span>{`(-%${Math.round(
+                        <span>{`(-${Math.round(
                           100 - (product.newPrice / product.price) * 100
-                        )})`}</span>
+                        )}%)`}</span>
                       </div>
                     ) : (
                       <h2 className="product__price">{`£${product.price}`}</h2>

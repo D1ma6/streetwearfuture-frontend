@@ -217,13 +217,16 @@ function category({ products }) {
                 );
           })
           .filter((product) =>
-            product.colors.some(
-              (color) =>
-                colorArr.some(
-                  (colorAr) =>
-                    `${color.color}`.toLowerCase() == `${colorAr}`.toLowerCase()
-                ) || `${color.color}`.toLowerCase() == "one color"
-            )
+            colorArr.length == arrColor.length
+              ? product
+              : product.colors.some(
+                  (color) =>
+                    colorArr.some(
+                      (colorAr) =>
+                        `${color.color}`.toLowerCase() ==
+                        `${colorAr}`.toLowerCase()
+                    ) || `${color.color}`.toLowerCase() == "one color"
+                )
           )
           .map((product) => (
             <Link key={product.id} href={`/products/${product.slug}`}>
@@ -237,9 +240,9 @@ function category({ products }) {
                     <div className="product__newPrice">
                       <h2 className="product__price">{`£${product.newPrice}`}</h2>
                       <p>{`£${product.price}`}</p>
-                      <span>{`(-%${Math.round(
+                      <span>{`(-${Math.round(
                         100 - (product.newPrice / product.price) * 100
-                      )})`}</span>
+                      )}%)`}</span>
                     </div>
                   ) : (
                     <h2 className="product__price">{`£${product.price}`}</h2>

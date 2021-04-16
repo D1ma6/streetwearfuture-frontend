@@ -298,9 +298,9 @@ function Product({ product, products }) {
                   {`£${product.newPrice}`}
 
                   <p>{`£${product.price}`}</p>
-                  <span>{`(-%${Math.round(
+                  <span>{`(-${Math.round(
                     100 - (product.newPrice / product.price) * 100
-                  )})`}</span>
+                  )}%)`}</span>
                 </div>
               ) : (
                 `£${product.price}`
