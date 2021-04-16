@@ -216,13 +216,16 @@ function category({ products }) {
                 );
           })
           .filter((product) =>
-            product.colors.some(
-              (color) =>
-                colorArr.some(
-                  (colorAr) =>
-                    `${color.color}`.toLowerCase() == `${colorAr}`.toLowerCase()
-                ) || `${color.color}`.toLowerCase() == "one color"
-            )
+            colorArr.length == arrColor.length
+              ? product
+              : product.colors.some(
+                  (color) =>
+                    colorArr.some(
+                      (colorAr) =>
+                        `${color.color}`.toLowerCase() ==
+                        `${colorAr}`.toLowerCase()
+                    ) || `${color.color}`.toLowerCase() == "one color"
+                )
           )
           .map((product) => (
             <Link key={product.id} href={`/products/${product.slug}`}>
