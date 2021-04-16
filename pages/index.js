@@ -280,10 +280,10 @@ function Home({ page, allProducts }) {
                 <p
                   className={styles.displayItem__p}
                 >{`£${firstItemDisplay.price}`}</p>
-                <span>{`(-%${Math.round(
+                <span>{`(-${Math.round(
                   100 -
                     (firstItemDisplay.newPrice / firstItemDisplay.price) * 100
-                )})`}</span>
+                )}%)`}</span>
               </div>
             ) : (
               <div className="product__newPrice">
@@ -312,11 +312,11 @@ function Home({ page, allProducts }) {
                   <p
                     className={styles.displayItem__p}
                   >{`£${secondItemDisplay.price}`}</p>
-                  <span>{`(-%${Math.round(
+                  <span>{`(-${Math.round(
                     100 -
                       (secondItemDisplay.newPrice / secondItemDisplay.price) *
                         100
-                  )})`}</span>
+                  )}%)`}</span>
                 </div>
               ) : (
                 <div className="product__newPrice">
@@ -347,10 +347,10 @@ function Home({ page, allProducts }) {
                   <p
                     className={styles.displayItem__p}
                   >{`£${thirdItemDisplay.price}`}</p>
-                  <span>{`(-%${Math.round(
+                  <span>{`(-${Math.round(
                     100 -
                       (thirdItemDisplay.newPrice / thirdItemDisplay.price) * 100
-                  )})`}</span>
+                  )}%)`}</span>
                 </div>
               ) : (
                 <div className="product__newPrice">
