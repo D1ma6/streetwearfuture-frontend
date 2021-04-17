@@ -378,6 +378,12 @@ a {
         font-size: 14px;
       }
     }
+    &__container {
+      &__title {
+        font-size: 18px;
+        margin: 0;
+      }
+    }
     &__price {
       font-size: 14px;
     }
