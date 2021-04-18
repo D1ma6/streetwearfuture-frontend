@@ -23,8 +23,8 @@ function Home({ page, allProducts }) {
       : width <= 1110 && width >= 871
       ? 3
       : width <= 870 && width >= 640
-      ? page.products.length
-      : page.products.length
+      ? 10
+      : 10
   );
 
   // popups
