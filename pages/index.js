@@ -154,11 +154,6 @@ function Home({ page, allProducts }) {
       });
       setSliderThird(1);
     }
-    console.log(
-      products.filter((product) => product.onSale == true).length % 2 == 0
-        ? products.filter((product) => product.onSale == true).length
-        : products.filter((product) => product.onSale == true).length - 1
-    );
   }, [width]);
 
   useEffect(() => {
@@ -296,6 +291,11 @@ function Home({ page, allProducts }) {
               </div>
             ) : (
               <div className="product__newPrice">
+                <Link href={`/products/${firstItemDisplay.slug}`}>
+                  <button className={styles.displayItem__btn}>
+                    View product
+                  </button>
+                </Link>
                 <h2 className="product__price">{`£${firstItemDisplay.price}`}</h2>
               </div>
             )}
@@ -329,6 +329,11 @@ function Home({ page, allProducts }) {
                 </div>
               ) : (
                 <div className="product__newPrice">
+                  <Link href={`/products/${firstItemDisplay.slug}`}>
+                    <button className={styles.displayItem__btn}>
+                      View product
+                    </button>
+                  </Link>
                   <h2 className="product__price">{`£${secondItemDisplay.price}`}</h2>
                 </div>
               )}
@@ -363,6 +368,11 @@ function Home({ page, allProducts }) {
                 </div>
               ) : (
                 <div className="product__newPrice">
+                  <Link href={`/products/${firstItemDisplay.slug}`}>
+                    <button className={styles.displayItem__btn}>
+                      View product
+                    </button>
+                  </Link>
                   <h2 className="product__price">{`£${thirdItemDisplay.price}`}</h2>
                 </div>
               )}
